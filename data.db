@@ -1,0 +1,17 @@
+vrow(100, Host, Year, y).
+vrow(100, Host, Country, u).
+kd(1, Host, y)
+
+vrow(101, Results, Year, y).
+vrow(101, Results, Country, u).
+vrow(101, Results, Place, p).
+kd(2, Results, x).
+kd(2, Results, u).
+kd(3, Results, x).
+kd(3, Results, p).
+
+vrow(102, Winner, p).
+kd(4, Winner).
+
+vrow(103, Benelux, Country, u).
+kd(5, Benelux, u).
