@@ -9,9 +9,3 @@ kd(2, results, y).
 kd(2, results, u).
 kd(3, results, y).
 kd(3, results, p).
-
-vrow(102, winner, place, p).
-kd(4, winner).
-
-vrow(103, benelux, country, u).
-kd(5, benelux, u).
