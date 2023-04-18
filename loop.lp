@@ -1,25 +1,44 @@
 #show keyClosure/2.
 #show keyAttack/2.
+#show keyAttackKey/2.
 
 key(I,T):- kd(I,T,V).
 
-intersection(R,K,L,V):- kd(K,R,V), kd(L,R,V).
+inKeyForT(T,V):- kd(I,T,V).
+
+otherKey(I,T):- kd(J,T,V), kd(I,T,V), I!=J.
+onlyKeyForT(T,V):- kd(I,T,V), not otherKey(I,T) .
 
 out(I,V) :- kd(J,T,W), vrow(K,T,N,V), key(I,T2), T!=T2,  not keyClosure(I,W).
 
 keyClosure(I,V):- kd(I,T,V).
-keyClosure(I,V):- kd(J,T), vrow(K,T,N,V), key(I,T2), T!=T2.
-keyClosure(I,V):- kd(J,T,W), vrow(K,T,N,V), key(I,T2), T!=T2, not out(I,W).
+keyClosure(I,V):- kd(J,T,W), vrow(K,T,N,V), key(I,T2), T!=T2, not out(I,W), not inKeyForT(T,V).
 
 
-outAttack(I,V):- kd(J,T,W), vrow(K,T,N,V), key(I,T2), T!=T2,  not keyAttack(I,W), not keyClosureWithI(I,W).
+outWithI(I,V):- kd(J,T,W), vrow(K,T,N,V), key(I,T2), T!=T2,  not keyClosureWithI(I,W).
+
 keyClosureWithI(I,V):- kd(I,T,V).
 keyClosureWithI(I,V):- vrow(J,T,N,V), key(I,T).
-keyClosureWithI(I,V):- kd(J,T), vrow(K,T,N,V), key(I,T2).
-keyClosureWithI(I,V):- kd(J,T,W), vrow(K,T,N,V), key(I,T2), not kd(I,T2,V), not outAttack(I,W).
+keyClosureWithI(I,V):- kd(J,T,W), vrow(K,T,N,V), key(I,T2), T!=T2, not outWithI(I,W), not onlyKeyForT(T,V).
 
-keyAttack(I,V):- keyClosureWithI(I,V), not keyClosure(I,V).
+outAttack(I,V):- keyClosure(I,V).
+keyAttack(I,V):- keyClosureWithI(I,V), not outAttack(I,V).
+
+
+keyAttackKey(I,J):- keyAttack(I,V), kd(J,T,V), I!=J.
 
 keyCount(N) :- N = #count{I,V:keyClosure(I,V)}.
 
 #minimize{N: keyCount(N)}.
+
+
+keyWithICount(N) :- N = #count{I,V:keyClosureWithI(I,V)}.
+
+#minimize{N: keyClosureWithI(N)}.
+
+path(I,J):- keyAttackKey(I,J), keyAttackKey(J,I).
+path(I,J):- keyAttackKey(I,J), keyAttackKey(J,K), path(K,I).
+
+unsatisfied:- keyAttackKey(I,J), keyAttackKey(J,K), path(K,I).
+
+satisfied: not unsatisfied.

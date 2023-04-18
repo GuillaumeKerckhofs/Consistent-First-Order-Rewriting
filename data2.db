@@ -1,11 +1,9 @@
-vrow(100, host, year, y).
-vrow(100, host, country, u).
-kd(1, host, y).
+vrow(100, table1, x, x).
+vrow(100, table1, y, y).
+kd(1, table1, x).
 
-vrow(101, results, year, y).
-vrow(101, results, country, u).
-vrow(101, results, place, p).
-kd(2, results, y).
-kd(2, results, u).
-kd(3, results, y).
-kd(3, results, p).
+vrow(101, table2, y, y).
+vrow(101, table2, z, z).
+vrow(101, table2, u, u).
+kd(2, table2, y).
+kd(2, table2, z).
