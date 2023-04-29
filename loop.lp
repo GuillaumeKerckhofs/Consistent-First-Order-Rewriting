@@ -1,6 +1,5 @@
-#show keyClosure/2.
-#show keyAttack/2.
-#show keyAttackKey/2.
+#show satisfied/0.
+#show unsatisfied/0.
 
 key(I,T):- kd(I,T,V).
 
@@ -36,9 +35,9 @@ keyWithICount(N) :- N = #count{I,V:keyClosureWithI(I,V)}.
 
 #minimize{N: keyClosureWithI(N)}.
 
-path(I,J):- keyAttackKey(I,J), keyAttackKey(J,I).
-path(I,J):- keyAttackKey(I,J), keyAttackKey(J,K), path(K,I).
+path(I,J):- keyAttackKey(I,K), keyAttackKey(K,J).
+path(I,J):- keyAttackKey(I,K), path(K,J).
 
-unsatisfied:- keyAttackKey(I,J), keyAttackKey(J,K), path(K,I).
+unsatisfied:- keyAttackKey(I,J), keyAttackKey(K,I), path(I,I).
 
-satisfied: not unsatisfied.
+satisfied:- not unsatisfied.

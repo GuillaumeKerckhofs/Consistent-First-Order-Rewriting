@@ -3,7 +3,5 @@ vrow(100, table1, y, y).
 kd(1, table1, x).
 
 vrow(101, table2, y, y).
-vrow(101, table2, z, z).
-vrow(101, table2, u, u).
+vrow(101, table2, u, x).
 kd(2, table2, y).
-kd(2, table2, z).
