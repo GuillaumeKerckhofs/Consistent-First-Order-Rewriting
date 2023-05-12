@@ -1,26 +1,26 @@
-#show jointClosure/4.
-#show jointKey/4.
+#show satisfied/0.
+#show unsatisfied/0.
 
 table(T):- vrow(I,T,N,V).
 
-jointVariable(T,J,V):- vrow(I,T,N,V), kd(J,T,K), not kd(J,T,V), vrow(I2,T2,N2,V), T!=T2.
+jointVariable(J,V):- vrow(I,T,N,V), kd(J,T,K), not kd(J,T,V), vrow(I2,T2,N2,V), T!=T2.
 
-jointKey(I,J,T,V):- kd(J,T,V), kd(I,T,V), J!=I.
+jointKey(I,J,V):- kd(J,T,V), kd(I,T,V), J!=I, jointVariable(I,W).
 
-out(I,J,T,V) :- vrow(I,T2,N,V), kd(J,T2,K), T!=T2, not jointClosure(I,J,T,K), table(T).
-jointClosure(I,J,T,V) :- jointKey(I,J,T,V), jointVariable(I,J,W).
-jointClosure(I,J,T,V) :- not out(I,J,T,K), vrow(I,T2,N,V), kd(J,T2,K), T!=T2, table(T).
+out(I,J,V) :- vrow(I,T2,N,V), kd(J,T2,K), T!=T2, not jointClosure(I,J,K), table(T).
+jointClosure(I,J,V) :- jointKey(I,J,V), jointVariable(I,W).
+jointClosure(I,J,V) :- not out(I,J,K), vrow(R,T2,N,V), kd(I2,T2,K), jointKey(I,J,W), kd(I,T,Z), T!=T2.
 
 
-keyCount(N) :- N = #count{I,J,T,V: jointClosure(I,J,T,V)}.
+keyCount(N) :- N = #count{I,J,V: jointClosure(I,J,V)}.
 
 #minimize{N: keyCount(N)}.
 
-jointKeyCount(N) :- N = #count{I,J,T,V: jointKey(I,J,T,V)}.
+jointKeyCount(N) :- N = #count{I,J,V: jointKey(I,J,V)}.
 
 #minimize{N: jointKeyCount(N)}.
 
 
-unsatisfied:- not satisfied.
+unsatisfied:- jointVariable(J,V), jointKey(J,I,W), kd(J,T,Z), not jointClosure(I,J,Z).
 
 satisfied:- not unsatisfied.
