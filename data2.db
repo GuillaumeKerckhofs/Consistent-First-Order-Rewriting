@@ -1,11 +1,16 @@
-vrow(100, table1, x, x).
-vrow(100, table1, y, y).
-kd(1, table1, x).
+vrow(102, r, x, x).
+vrow(102, r, y, y).
+vrow(102, r, z, z).
+kd(20, r, x).
+kd(20, r, y).
+kd(21, r, y).
+kd(21, r, z).
+kd(22, r, x).
+kd(22, r, z).
 
-vrow(101, table2, y, y).
-vrow(101, table2, z, z).
-kd(2, table2, y).
-
-vrow(101, table3, z, z).
-vrow(101, table3, x, x).
-kd(3, table2, z).
+vrow(103, r2, x, x).
+vrow(103, r2, y, y).
+vrow(103, r2, z, z).
+kd(200, r2, x).
+kd(210, r2, y).
+kd(220, r2, z).
