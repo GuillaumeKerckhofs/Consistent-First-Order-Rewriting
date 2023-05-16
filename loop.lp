@@ -21,7 +21,7 @@ keyClosureWithI(I,V):- vrow(K,T2,N,V), key(I,T), kd(J,T,W), not out(I,J).
 
 keyWithICount(N) :- N = #count{I,V:keyClosureWithI(I,V)}.
 
-#minimize{N: keyClosureWithI(N)}.
+#minimize{N: keyWithICount(N)}.
 
 
 
