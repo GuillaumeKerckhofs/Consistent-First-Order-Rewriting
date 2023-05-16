@@ -9,7 +9,7 @@ jointTable(I,J,T):- kd(J,T,V), kd(I,T,V), J!=I.
 
 out(I,J,M) :- kd(M,T2,V), T!=T2, not jointClosure(I,J,V), jointTable(I,J,T).
 jointClosure(I,J,V) :- jointKey(I,J,V), jointVariable(I,W).
-jointClosure(I,J,V) :- not out(I,J,K), vrow(R,T2,N,V), kd(I2,T2,K), jointTable(I,J,T),  T!=T2.
+jointClosure(I,J,V) :- not out(I,J,I2), vrow(R,T2,N,V), kd(I2,T2,K), jointTable(I,J,T),  T!=T2.
 
 keyCount(N) :- N = #count{I,J,V: jointClosure(I,J,V)}.
 #minimize{N: keyCount(N)}.

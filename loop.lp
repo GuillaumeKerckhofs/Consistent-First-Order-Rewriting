@@ -1,6 +1,5 @@
 #show satisfied/0.
 #show unsatisfied/0.
-#show keyAttack/2.
 
 key(I,T):- kd(I,T,V).
 

@@ -25,6 +25,8 @@ jointClosure(I,J,V) :- not existClosure(I,J), jointTable(I,J,T), value(V), V=qed
 keyCount(N) :- N = #count{I,J,V: jointClosure(I,J,V)}.
 #minimize{N: keyCount(N)}.
 
+:- jointClosure(I,J,qed), jointClosure(I,J,V), V!=qed.
+
 
 
 out(I,J,L,M) :- kd(M,T2,V), T!=T2, not jointClosure(I,J,L,V), jointTable(I,J,L,T).
