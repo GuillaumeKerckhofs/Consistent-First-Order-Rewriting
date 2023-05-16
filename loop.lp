@@ -1,5 +1,6 @@
 #show satisfied/0.
 #show unsatisfied/0.
+#show keyAttack/2.
 
 key(I,T):- kd(I,T,V).
 
@@ -17,7 +18,7 @@ keyCount(N) :- N = #count{I,V:keyClosure(I,V)}.
 outWithI(I,J):- kd(J,T2,V), key(I,T), T!=T2, not keyClosureWithI(I,V).
 
 keyClosureWithI(I,V):- kd(I,T,W), vrow(J,T,N,V).
-keyClosureWithI(I,V):- vrow(K,T2,N,V), key(I,T), kd(J,T,W), not out(I,J).
+keyClosureWithI(I,V):- vrow(K,T2,N,V), key(I,T), kd(J,T2,W), not out(I,J).
 
 keyWithICount(N) :- N = #count{I,V:keyClosureWithI(I,V)}.
 
