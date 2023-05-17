@@ -1,0 +1,12 @@
+vrow(101, p, x, x).
+vrow(101, p, y, y).
+vrow(101, p, w, w).
+kd(4, p, x).
+
+vrow(101, s, y, y).
+vrow(101, s, u, u).
+kd(4, s, y).
+
+vrow(101, r, w, w).
+vrow(101, r, v, v).
+kd(4, r, w).

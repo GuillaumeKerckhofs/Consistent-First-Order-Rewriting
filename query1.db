@@ -10,5 +10,5 @@ kd(3, r, y).
 kd(3, r, c).
 
 vrow(101, p, y, y).
-vrow(101, p, u, d).
+vrow(101, p, d, d).
 kd(4, p, y).
