@@ -1,0 +1,18 @@
+vrow(100, r, z, z).
+vrow(100, r, u, u).
+vrow(100, r, e, e).
+vrow(100, r, w, w).
+kd(1, r, z).
+kd(1, r, u).
+kd(2, r, u).
+kd(2, r, w).
+kd(3, r, u).
+kd(3, r, e).
+
+vrow(101, p, y, y).
+vrow(101, p, u, u).
+kd(4, p, y).
+
+vrow(102, s, z, z).
+vrow(102, s, v, v).
+kd(5, s, z).
