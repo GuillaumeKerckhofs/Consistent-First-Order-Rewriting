@@ -8,4 +8,4 @@ rInRepair(Z):- r(Z,W,C).
 
 :- p_repair(X,Y,Z), not sInRepair(Y).
 :- p_repair(X,Y,Z), not rInRepair(Z).
-:- r(Z,W,C), C!=c.
+:- p_repair(X,Y,Z), r(Z,W,C), C!=c.
