@@ -2,4 +2,9 @@
 {s_repair(Y,U): s(Y,U)}==1:- s(Y,U).
 {r_repair(Z,W,C): r(Z,W,C)}==1:- r(Z,W,C).
 
-:- r_repair(Z,W,C),p_repair(X,Y,Z), s_repair(Y,U).
+sInRepair(Y):- s(Y,U).
+rInRepair(Z):- r(Z,W,C).
+
+
+:- p_repair(X,Y,Z), not sInRepair(Y), not rInRepair(Z).
+:- r(Z,W,C), C!=c.
