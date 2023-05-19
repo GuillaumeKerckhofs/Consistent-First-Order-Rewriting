@@ -1,8 +1,10 @@
 #show satisfied/0.
 #show unsatisfied/0.
 
-satisfied:- p(X,Y,Z,W), not existDifferentX(X,Y,Z,W), not existDifferentY(X,Y,Z,W), not existDifferentZ(X,Y,Z,W).
-unsatisfied:- not satisfied.
+satisfied:- not unsatisfied.
+unsatisfied:- p(X,Y,Z,W), existDifferentX(X,Y,Z,W).
+unsatisfied:- p(X,Y,Z,W), existDifferentY(X,Y,Z,W).
+unsatisfied:- p(X,Y,Z,W), existDifferentZ(X,Y,Z,W).
 
 existDifferentX(X,Y,Z,W):- p(X,Y,Z,W), p(X,Y2,Z2,W2), W!=W2.
 

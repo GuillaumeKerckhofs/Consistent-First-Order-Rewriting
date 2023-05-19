@@ -1,8 +1,8 @@
 #show satisfied/0.
 #show unsatisfied/0.
 
-unsatisfied:- not satisfied.
-satisfied:- p(X,Y,Z), not rightPart(X).
+unsatisfied:- p(X,Y,Z), rightPart(X).
+satisfied:- not unsatisfied.
 
 existS(Y):- s(Y,U).
 existR(Z):- r(Z,W,C).
