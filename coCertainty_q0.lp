@@ -15,4 +15,4 @@ cannotAddR(Z,W,V):- outR(Z,W,V), inR(Z,S,T).
 :- outS(Y,U), not cannotAddS(Y,U).
 :- outR(Z,W,V), not cannotAddR(Z,W,V).
 
-:- inP(X,Y,Z), inR(Y,Y), inR(Z,W,c).
+:- inP(X,Y,Z), inS(Y,U), inR(Z,W,c).
