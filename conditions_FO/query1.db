@@ -1,0 +1,7 @@
+vrow(100, p, x, x).
+vrow(100, p, y, y).
+vrow(100, p, z, z).
+qrow(100, p, c, c).
+kd(1, p, x).
+kd(2, p, y).
+kd(3, p, z).
